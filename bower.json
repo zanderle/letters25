@@ -1,0 +1,23 @@
+{
+  "name": "letters25",
+  "version": "0.0.0",
+  "homepage": "https://github.com/zanderle/letters25",
+  "authors": [
+    "Zan Anderle <zan.anderle@gmail.com>"
+  ],
+  "description": "Website for the letters project",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "letters25/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5"
+  }
+}
