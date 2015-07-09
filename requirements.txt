@@ -1,3 +1,5 @@
 Django==1.8.2
+django-filer==0.9.11
+django-pipeline==1.5.2
 psycopg2==2.6.1
 wsgiref==0.1.2
