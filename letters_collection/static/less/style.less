@@ -1,0 +1,69 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "custom_variables.less";
+
+.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+    -webkit-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
+    -moz-box-shadow:    @x @y @blur @spread rgba(0, 0, 0, @alpha);
+    box-shadow:     @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 26px;
+  padding-top: @navbar-height + @navbar-default-top-border;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 26px;
+  background-color: @brand-primary;
+}
+
+.social-media-list {
+    position: absolute;
+    top: @navbar-height + @navbar-default-top-border + 50px;
+    left: 0;
+    a {
+        padding: 14px 12px 14px 9px;
+        margin-bottom: 5px;
+        background-color: @brand-primary;
+        display: block;
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            color: white;
+        }
+    }
+}
+
+.navbar-default {
+    border-top: @navbar-default-top-border solid @brand-primary;
+    .nav {
+      > li > a {
+          padding-left: 70px;
+          padding-right: 70px;
+        }
+    }
+    .navbar-brand {
+        height: @navbar-height + @navbar-default-top-border;
+        padding: 50px;
+        background-color: @navbar-default-bg;
+        .drop-shadow(0; -20px; 80px; -5px; 0.2);
+        margin-top: -(@navbar-default-top-border);
+        img {
+            height: 100%;
+            width: auto;
+        }
+        &:hover,
+        &:focus {
+          background-color: @navbar-default-bg;
+        }
+    }
+}
