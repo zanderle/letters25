@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block container %}
+
+{% for letter in object_list %}
+{% if forloop.first %}
+{{ letter.illustration.featured.url }}
+    <img src="{{ letter.illustration|thumbnail_url:'featured' }}" alt="Illustration for letter">
+    {% thumbnail letter.illustration 800x436.5 quality=100 %}
+{% else %}
+{% endif %}
+{{ letter.author }}
+{% endfor %}
+{% endblock %}

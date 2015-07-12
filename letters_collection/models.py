@@ -4,6 +4,7 @@ from filer.fields.image import FilerImageField
 
 class Letter(models.Model):
     author = models.CharField(max_length=255, help_text='Author of the letter')
+    slug = models.SlugField(max_length=100, unique=True, help_text='URL slug for this letter')
     occupation = models.CharField(max_length=100, help_text="Author's occupation")
     age = models.CharField(max_length=10, help_text="Author's age")
     location = models.CharField(max_length=100, help_text="Author's location")
@@ -20,7 +21,7 @@ class Letter(models.Model):
     timestamp_published = models.DateTimeField(
         blank=True,
         null=True,
-        help_text='When was this letter published'
+        help_text='When was this letter published (leave empty for auto-fill)'
         )
     submission = models.ForeignKey(
         'letters_collection.LetterSubmission',
