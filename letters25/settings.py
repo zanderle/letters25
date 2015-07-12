@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'djangocms_admin_style',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pipeline',
     'filer',
+    'mptt',
     'easy_thumbnails',
     'letters_collection',
 )
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
             ],
         },
     },
@@ -107,6 +110,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+
+
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -115,8 +121,69 @@ STATICFILES_FINDERS = (
 )
 STATIC_URL = '/static/'
 
-PIPELINE_CSS = {}
-PIPELINE_JS = {}
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_DIR, '..', 'letters_collection', 'static', 'bower_components'),
+)
+
+PIPELINE_CSS = {
+    'pace': {
+        'source_filenames': (
+            'pace/themes/red/pace-theme-minimal.css',
+        ),
+        'output_filename': 'css/pace-theme.min.css',
+    },
+    'font-awesome': {
+        'source_filenames': (
+            'font-awesome/less/font-awesome.less',
+        ),
+        'output_filename': 'css/font-awesome.min.css'
+    },
+    # Custom styling
+    'custom': {
+        'source_filenames': (
+            'less/style.less',
+        ),
+        'output_filename': 'css/custom.min.css',
+    }
+}
+
+PIPELINE_JS = {
+    # Libraries
+    'jquery': {
+        'source_filenames': (
+            'jquery/dist/jquery.js',
+        ),
+        'output_filename': 'js/jquery.js',
+    },
+    'vendor': {
+        'source_filenames': (
+            'bootstrap/dist/js/bootstrap.js',
+        ),
+        'output_filename': 'js/vendor.js',
+    },
+    'pace': {
+        'source_filenames': (
+            'pace/pace.js',
+        ),
+        'output_filename': 'js/pace.js',
+    },
+}
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.less.LessCompiler',
+)
 
 # Retina support for easy_thumbnails
 THUMBNAIL_HIGH_RESOLUTION = True
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'list-size': {'size': (50, 50), 'crop': True},
+        'featured': {'size': (800, 436.5), 'quality': 100}
+    },
+}
+
+try:
+    from .local_settings import *
+except:
+    pass

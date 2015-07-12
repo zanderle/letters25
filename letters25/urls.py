@@ -16,8 +16,19 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from letters_collection import urls as letters_urls
+from django.conf import settings
+from django.conf.urls import patterns
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
+    url(r'^grappelli/', include('grappelli.urls')),  # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(letters_urls, namespace='letters')),
 ]
+
+# This is only needed when using runserver.
+if settings.DEBUG:
+    urlpatterns = patterns('',
+        url(r'^filer_public_thumbnails/(?P<path>.*)$', 'django.views.static.serve',  # NOQA
+            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        ) + staticfiles_urlpatterns() + urlpatterns  # NOQA
