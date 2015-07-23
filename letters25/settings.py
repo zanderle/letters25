@@ -124,6 +124,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, '..', 'letters_collection', 'static', 'bower_components'),
+    os.path.join(PROJECT_DIR, '..', 'letters_collection', 'static'),
 )
 
 PIPELINE_CSS = {
@@ -197,6 +198,9 @@ PIPELINE_JS = {
 PIPELINE_COMPILERS = (
     'pipeline.compilers.less.LessCompiler',
 )
+
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
+
 
 # Retina support for easy_thumbnails
 THUMBNAIL_HIGH_RESOLUTION = True
