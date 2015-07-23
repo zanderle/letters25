@@ -1,5 +1,6 @@
 from django.db import models
 from filer.fields.image import FilerImageField
+from markupfield.fields import MarkupField
 
 
 class Letter(models.Model):
@@ -14,7 +15,7 @@ class Letter(models.Model):
         help_text='Illustration for this letter',
         related_name="letter_illustration"
         )
-    letter = models.TextField(help_text='The letter itself')
+    letter = MarkupField(default_markup_type='markdown', help_text='The letter itself')
     published = models.BooleanField(default=False, help_text='Should this letter be published?')
     timestamp_created = models.DateTimeField(auto_now_add=True)
     timestamp_edited = models.DateTimeField(auto_now=True)

@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'filer',
     'mptt',
     'easy_thumbnails',
+    'markupfield',
     'letters_collection',
 )
 
@@ -182,6 +183,11 @@ THUMBNAIL_ALIASES = {
         'featured': {'size': (800, 436.5), 'quality': 100}
     },
 }
+
+import markdown
+MARKUP_FIELD_TYPES = (
+    ('markdown', markdown.markdown),
+)
 
 try:
     from .local_settings import *
