@@ -17,6 +17,12 @@ class Letter(models.Model):
         )
     letter = MarkupField(default_markup_type='markdown', help_text='The letter itself')
     published = models.BooleanField(default=False, help_text='Should this letter be published?')
+    popularity_index = models.IntegerField(
+        blank=True,
+        default=0,
+        help_text='The letter with higher index, will be shown as more popular. \
+        (This is only a temporary measure, until I automate it)'
+        )
     timestamp_created = models.DateTimeField(auto_now_add=True)
     timestamp_edited = models.DateTimeField(auto_now=True)
     timestamp_published = models.DateTimeField(
@@ -31,6 +37,9 @@ class Letter(models.Model):
         help_text='Submission for this letter',
         related_name='letter_object'
         )
+
+    def __unicode__(self):
+        return self.author
 
 
 class LetterSubmission(models.Model):

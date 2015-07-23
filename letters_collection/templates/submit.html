@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load pipeline static %}
+
+{% block extra_js %}
+{% javascript 'form-submit' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<br/>
+<br/>
+<br/>
+<br/>
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="{{ form.author.id_for_label }}">Name</label>
+                    {{ form.author }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="{{ form.age.id_for_label }}">Age</label>
+                    {{ form.age }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="{{ form.occupation.id_for_label }}">Occupation</label>
+                    {{ form.occupation }}
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="{{ form.location.id_for_label }}">Location</label>
+                    {{ form.location }}
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="{{ form.letter.id_for_label }}">Letter</label>
+                    {{ form.letter }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2 col-xs-offset-5">
+                <input type="image" src="{% static 'img/icons/postman.png' %}" alt="Submit your letter" class="center-block img-responsive">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

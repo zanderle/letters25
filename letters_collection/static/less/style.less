@@ -1,10 +1,17 @@
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "custom_variables.less";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+@import 'mondayregular.css';
+
 .drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
     -webkit-box-shadow: @x @y @blur @spread rgba(0, 0, 0, @alpha);
     -moz-box-shadow:    @x @y @blur @spread rgba(0, 0, 0, @alpha);
     box-shadow:     @x @y @blur @spread rgba(0, 0, 0, @alpha);
+}
+
+.inline-block {
+    display: inline-block;
 }
 
 html {
@@ -25,9 +32,14 @@ body {
   background-color: @brand-primary;
 }
 
+.main-content {
+    padding-bottom: 80px;
+}
+
 .social-media-list {
-    position: absolute;
-    top: @navbar-height + @navbar-default-top-border + 50px;
+    position: fixed;
+    z-index: 10;
+    top: @navbar-height + @navbar-default-top-border + 90px;
     left: 0;
     a {
         padding: 14px 12px 14px 9px;
@@ -43,12 +55,39 @@ body {
     }
 }
 
+.navbar-up {
+    top: -(@navbar-height + @navbar-default-top-border);
+}
+
 .navbar-default {
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
     border-top: @navbar-default-top-border solid @brand-primary;
     .nav {
-      > li > a {
-          padding-left: 70px;
-          padding-right: 70px;
+        > li > a {
+            position: relative;
+            padding-left: 50px;
+            padding-right: 50px;
+            font-weight: 600;
+        }
+        > .active a:hover,
+        > .active {
+            .img-navbar {
+                display: none;
+            }
+            .img-navbar-alt {
+                color: @navbar-default-bg;
+            }
+        }
+        a:hover {
+            .img-navbar {
+                display: none;
+            }
+            .img-navbar-alt {
+                color: @brand-primary;
+            }
         }
     }
     .navbar-brand {
@@ -64,6 +103,250 @@ body {
         &:hover,
         &:focus {
           background-color: @navbar-default-bg;
+        }
+    }
+    .img-navbar {
+        width: auto;
+        height: 70px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        text-align: center;
+    }
+    .img-navbar-alt {
+        color: @navbar-default-bg;
+    }
+    .navbar-right {
+        margin-right: 5%;
+    }
+}
+
+.featured-letter {
+    position: relative;
+    .featured-letter-illustration {
+        .drop-shadow (2px; 2px; 10px; 0; 0.05);
+    }
+    .letter-info {
+        position: absolute;
+        margin-left: 40px;
+    }
+}
+
+.letter-info {
+    color: @brand-primary;
+    .letter-info-content {
+        max-width: 190px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px @brand-primary solid;
+    }
+    .letter-info-link {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        display: block;
+    }
+    border-bottom: 6px @brand-primary solid;
+}
+
+.letters-list-nav {
+    > li > a {
+        padding: 15px 30px;
+        font-weight: 600;
+        &,
+        &:focus,
+        &:active {
+            color: black;
+            text-decoration: none;
+        }
+        &:hover {
+            color: @brand-secondary;
+            text-decoration: underline;
+        }
+    }
+    > li.active > a {
+        color: @brand-secondary;
+    }
+}
+
+.letter-list-icon {
+    position: relative;
+    width: 100%;
+    .letter-list-icon-link {
+        position: absolute;
+        text-align: center;
+        border-bottom: 10px solid @brand-primary;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        display: block;
+        visibility: hidden;
+    }
+    .overlay {
+        background-color: white;
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+    }
+    a:hover .letter-list-icon-link,
+    a:hover .overlay {
+        visibility: visible;
+    }
+}
+
+.letter-header {
+    .letter-info {
+        position: absolute;
+        left: 8%;
+    }
+}
+
+.project-heading {
+        font-family: 'mondayregular', cursive;
+        color: @brand-primary;
+        font-size: 54px;
+}
+
+.project-card {
+    padding: 60px 80px;
+    background-color: @navbar-default-bg;
+}
+.project-card-left-container {
+    padding-left: 0;
+}
+.project-card-right-container {
+    padding-right: 0;
+}
+
+.project-mailbox {
+    width: 200px;
+    &.orange-mailbox {
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        top: 50%;
+    }
+    &.white-mailbox {
+        position: absolute;
+        left: 5%;
+        top: 20%;
+    }
+    &.yellow-mailbox {
+        position: fixed;
+        left: 5%;
+        bottom: -60%;
+    }
+    &.red-mailbox {
+        position: fixed;
+        right: 5%;
+        bottom: -20px;
+    }
+}
+
+.team-stamps-container {
+    position: relative;
+    .team-stamp {
+        display: block;
+        float: left;
+        color: white;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        max-width: 100%;
+        padding: 25px 20px;
+        .name {
+            font-family: 'mondayregular', cursive;
+            font-size: @font-size-h4;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 12px;
+        }
+    }
+    .o-chung {
+        background-image: url('/static/img/icons/stamp red 01.png');
+    }
+    .trina-wang {
+        background-image: url('/static/img/icons/stamp pink 02.png');
+    }
+    .pik-shuen-fung {
+        background-image: url('/static/img/icons/stamp red 03.png');
+    }
+    .lillienne-zen {
+        background-image: url('/static/img/icons/stamp blue 04.png');
+    }
+    .vania-wat {
+        background-image: url('/static/img/icons/stamp red 05.png');
+    }
+    .zan-anderle {
+        background-image: url('/static/img/icons/stamp red 06.png');
+    }
+    .rachel-suen {
+        background-image: url('/static/img/icons/stamp red 08.png');
+    }
+    .wei-zheng {
+        background-image: url('/static/img/icons/stamp orange 09.png');
+    }
+    .emeritus-members {
+        background-image: url('/static/img/icons/stamp blue 07.png');
+    }
+}
+
+.form-submit {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid black;
+    &:focus {
+        outline: none;
+    }
+}
+
+.submit {
+    position: relative;
+    margin-bottom: 3em;
+    label {
+        position: absolute;
+        font-size: 24px;
+        font-weight: 400;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        pointer-events: none;
+    }
+    &.submit-not-active {
+        label {
+            bottom: 25%;
+            left: 0;
+        }
+    }
+    &.submit-active {
+        label {
+            bottom: 90%;
+            color: @brand-primary;
+        }
+        .form-submit {
+            border-bottom-color: @brand-primary;
+        }
+    }
+    &.submit-filled-in {
+        label {
+            color: black;
+            bottom: 90%;
+        }
+        .form-submit {
+            border-bottom-color: black;
         }
     }
 }

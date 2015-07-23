@@ -139,6 +139,12 @@ PIPELINE_CSS = {
         ),
         'output_filename': 'css/font-awesome.min.css'
     },
+    'material-form': {
+        'source_filenames': (
+            'less/material-form.less',
+        ),
+        'output_filename': 'css/material-form.min.css',
+    },
     # Custom styling
     'custom': {
         'source_filenames': (
@@ -156,11 +162,29 @@ PIPELINE_JS = {
         ),
         'output_filename': 'js/jquery.js',
     },
+    'stellar': {
+        'source_filenames': (
+            'stellar/jquery.stellar.js',
+        ),
+        'output_filename': 'js/stellar.js',
+    },
     'vendor': {
         'source_filenames': (
             'bootstrap/dist/js/bootstrap.js',
         ),
         'output_filename': 'js/vendor.js',
+    },
+    'form-submit': {
+        'source_filenames': (
+            'js/form-submit.js',
+        ),
+        'output_filename': 'js/form-submit.js',
+    },
+    'navbar-scroll': {
+        'source_filenames': (
+            'js/hide-menu.js',
+        ),
+        'output_filename': 'js/navbar-scroll.js',
     },
     'pace': {
         'source_filenames': (
@@ -179,8 +203,8 @@ THUMBNAIL_HIGH_RESOLUTION = True
 
 THUMBNAIL_ALIASES = {
     '': {
-        'list-size': {'size': (50, 50), 'crop': True},
-        'featured': {'size': (800, 436.5), 'quality': 100}
+        'list-size': {'size': (400, 218), 'crop': True},
+        'featured': {'size': (800, 436.5), 'quality': 95}
     },
 }
 

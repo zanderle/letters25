@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load thumbnail pipeline %}
+
+{% block extra_js %}
+    {% javascript 'navbar-scroll' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<br/>
+<br/>
+<br/>
+    
+    <div class="row">
+        <div class="col-xs-12">
+        <div class="letter-header">
+            <div class="letter-info  text-left">
+                <div class="letter-info-content">
+                    <strong>{{ letter.author }}</strong><br/>
+                    {{ letter.age }}<br/>
+                    {{ letter.occupation }}<br/>
+                    {{ letter.location }}<br/>
+                    <br/>
+                    Illustration by <br/>
+                    {{ letter.illustration.author }}
+                </div>
+            </div>
+            <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'featured' }}" alt="{{ letter.illustration.default_alt_text }}">
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            {{ letter.letter }}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
