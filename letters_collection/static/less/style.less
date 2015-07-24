@@ -255,15 +255,20 @@ body {
 
 .team-stamps-container {
     position: relative;
+    .team-stamp-wrapper {
+        display: inline-block;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
     .team-stamp {
         display: block;
-        float: left;
         color: white;
-        background-size: contain;
+        background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: bottom;
-        max-width: 100%;
-        padding: 25px 20px;
+        width: 100%;
+        padding: 30px 25px;
+
         .name {
             font-family: 'mondayregular', cursive;
             font-size: @font-size-h4;
@@ -275,31 +280,61 @@ body {
         }
     }
     .o-chung {
-        background-image: url('/static/img/icons/stamp red 01.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp red 01.png');
+        }
+        width: 240px;
     }
     .trina-wang {
-        background-image: url('/static/img/icons/stamp pink 02.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp pink 02.png');
+        }
+        width: 180px;
     }
     .pik-shuen-fung {
-        background-image: url('/static/img/icons/stamp red 03.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp red 03.png');
+        }
+        width: 170px;
     }
     .lillienne-zen {
-        background-image: url('/static/img/icons/stamp blue 04.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp blue 04.png');
+        }
+        width: 200px;
     }
     .vania-wat {
-        background-image: url('/static/img/icons/stamp red 05.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp red 05.png');
+        }
+        width: 180px;
     }
     .zan-anderle {
-        background-image: url('/static/img/icons/stamp red 06.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp red 06.png');
+        }
+        width: 220px;
     }
     .rachel-suen {
-        background-image: url('/static/img/icons/stamp red 08.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp red 08.png');
+        }
+        width: 180px;
     }
     .wei-zheng {
-        background-image: url('/static/img/icons/stamp orange 09.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp orange 09.png');
+            height: 170px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        width: 170px;
     }
     .emeritus-members {
-        background-image: url('/static/img/icons/stamp blue 07.png');
+        .team-stamp {
+            background-image: url('/static/img/icons/stamp blue 07.png');
+        }
+        width: 240px;
     }
 }
 
