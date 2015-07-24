@@ -87,8 +87,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'letters',
         'USER': 'letters',
-        'PASSWORD': '',
-        'HOST': '',
+        'PASSWORD': 'letters',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
@@ -121,6 +121,11 @@ STATICFILES_FINDERS = (
     'pipeline.finders.PipelineFinder',
 )
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, '../../static/')
+
+MEDIA_URL = '/filer_public_thumbnails/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR, '../../media/')
 
 STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, '..', 'letters_collection', 'static', 'bower_components'),
