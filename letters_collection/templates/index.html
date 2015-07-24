@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load thumbnail active_tag %}
 
+{% block extra_js %}
+{% if submitted %}
+<script>
+    $('#submitted-letter-modal').modal('show');
+</script>
+{% endif %}
+{% endblock %}
+
 {% block content %}
 <div class="container">
 <br/>
@@ -61,4 +69,22 @@
     </div>
 
 </div>
+
+<button type="button" data-toggle="modal" data-target="#submitted-letter-modal" class='hidden'></button>
+<div class="modal fade" id="submitted-letter-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title modal-title-submitted h3">Thank you!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Thank you for submitting a letter. We will contact you over email.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}

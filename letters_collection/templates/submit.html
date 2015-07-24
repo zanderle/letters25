@@ -14,33 +14,56 @@
     <form action="" method="post">
     {% csrf_token %}
         <div class="row">
+            <div class="col-xs-12">
+                {{ form.non_field_errors }}
+            </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
-                    <label for="{{ form.author.id_for_label }}">Name</label>
+                    <label for="{{ form.author.id_for_label }}">Name
+                    {% if form.author.errors %}
+                     - <span class="errorlist">{% for error in form.author.errors %}{{ error|escape }}{% endfor %}</span>
+                    {% endif %}
+                    </label>
                     {{ form.author }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
-                    <label for="{{ form.age.id_for_label }}">Age</label>
+                    <label for="{{ form.age.id_for_label }}">Age
+                    {% if form.age.errors %}
+                     - <span class="errorlist">{% for error in form.age.errors %}{{ error|escape }}{% endfor %}</span>
+                    {% endif %}
+                    </label>
                     {{ form.age }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
-                    <label for="{{ form.occupation.id_for_label }}">Occupation</label>
+                    <label for="{{ form.occupation.id_for_label }}">Occupation
+                    {% if form.occupation.errors %}
+                     - <span class="errorlist">{% for error in form.occupation.errors %}{{ error|escape }}{% endfor %}</span>
+                    {% endif %}
+                    </label>
                     {{ form.occupation }}
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
-                    <label for="{{ form.location.id_for_label }}">Location</label>
+                    <label for="{{ form.location.id_for_label }}">Location
+                    {% if form.location.errors %}
+                     - <span class="errorlist">{% for error in form.location.errors %}{{ error|escape }}{% endfor %}</span>
+                    {% endif %}
+                    </label>
                     {{ form.location }}
                 </div>
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                    <label for="{{ form.letter.id_for_label }}">Letter</label>
+                    <label for="{{ form.letter.id_for_label }}">Letter
+                    {% if form.letter.errors %}
+                     - <span class="errorlist">{% for error in form.letter.errors %}{{ error|escape }}{% endfor %}</span>
+                    {% endif %}
+                    </label>
                     {{ form.letter }}
                 </div>
             </div>

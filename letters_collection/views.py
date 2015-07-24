@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DetailView, TemplateView, FormView
+from django.core.urlresolvers import reverse_lazy
 from .models import Letter
 from .forms import SubmissionForm
 
@@ -12,7 +13,8 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         featured = Letter.objects.filter(published=True).latest('timestamp_published')
-        context.update({'featured': featured})
+        submitted = self.request.GET.get('submitted')
+        context.update({'featured': featured, 'submitted': submitted})
         return context
 
     def get_queryset(self):
@@ -42,3 +44,4 @@ class AboutUsView(TemplateView):
 class SubmitView(FormView):
     form_class = SubmissionForm
     template_name = 'submit.html'
+    success_url = '/?submitted=1'
