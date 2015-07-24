@@ -41,6 +41,16 @@ class Letter(models.Model):
     def __unicode__(self):
         return self.author
 
+    @property
+    def reading_length(self):
+        """
+        Return estimated reading length of this letter rounded up to the minute.
+        """
+        number_of_char = len(self.letter_raw)
+        estimate = number_of_char / 1000  # Estimated reading length in minutes
+        estimate = round(estimate)
+        return '%s min' % estimate if estimate else '< 1 min'
+
 
 class LetterSubmission(models.Model):
     author = models.CharField(max_length=255, help_text='Your first and last name')
