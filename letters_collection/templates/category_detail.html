@@ -1,33 +1,9 @@
 {% extends "base.html" %}
-{% load thumbnail active_tag %}
+{% load active_tag %}
 
 {% block content %}
 <div class="container">
 <br/>
-<br/>
-<br/>
-    
-    <div class="row">
-        <div class="col-xs-12">
-        <div class="featured-letter">
-            <img class="img-responsive inline-block center-block featured-letter-illustration" src="{{ featured.illustration|thumbnail_url:'featured' }}" alt="{{ featured.illustration.default_alt_text }}">
-
-            <div class="letter-info  inline-block text-left">
-                <div class="letter-info-content">
-                    <strong>{{ featured.author }}</strong><br/>
-                    {{ featured.age }}<br/>
-                    {{ featured.occupation }}<br/>
-                    {{ featured.location }}<br/>
-                    <br/>
-                    Illustration by <br/>
-                    {{ featured.illustration.author }}
-                </div>
-                <a class="letter-info-link" href="{% url 'letters:letter' featured.slug %}">Read more &raquo;</a>
-            </div>
-        </div>
-        </div>
-    </div>
-
 <br/>
 <br/>
 
@@ -40,6 +16,19 @@
             </ul>
         </div>
     </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-inline letters-categories-nav">
+                <li class="active"><a class="category-age-link" href="#">Age</a></li>
+                <li><a class="category-location-link" href="#">Location</a></li>
+                <li><a class="category-length-link" href="#">Letter length</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
 
     <div class="row">
         {% for letter in object_list %}
@@ -59,6 +48,7 @@
             </div>
         {% endfor %}
     </div>
+
 
 </div>
 {% endblock %}

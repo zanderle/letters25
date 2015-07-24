@@ -154,7 +154,8 @@ body {
 .letters-list-nav {
     > li > a {
         padding: 15px 30px;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 18px;
         &,
         &:focus,
         &:active {
@@ -168,6 +169,27 @@ body {
     }
     > li.active > a {
         color: @brand-secondary;
+    }
+}
+
+.letters-categories-nav {
+    margin-left: 20px;
+    > li > a {
+        padding: 15px 8px;
+        font-size: 18px;
+        &,
+        &:focus,
+        &:active {
+            color: black;
+            text-decoration: none;
+        }
+        &:hover {
+            color: @brand-primary;
+            text-decoration: none;
+        }
+    }
+    > li.active > a {
+        color: @brand-primary;
     }
 }
 
@@ -384,4 +406,20 @@ body {
             border-bottom-color: black;
         }
     }
+
+.category-length-info {
+    margin-top: 20px;
+    margin-left: -40px;
+    .category-length-info-description {
+        color: @brand-primary;
+        font-size: @font-size-small;
+        border-bottom: 1px solid @brand-primary;
+        padding-bottom: 10px;
+    }
+    .category-length-info-link {
+        font-weight: 600;
+        padding-top: 10px;
+        display: block;
+    }
+}
 }

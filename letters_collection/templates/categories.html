@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load active_tag static %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function () {
+        $('.letters-categories-nav a').on('click', function (e) {
+            e.preventDefault();
+            $('.letters-categories-nav .active').removeClass('active');
+            $(this).parent('li').addClass('active');
+
+            $('.category-section').addClass('hidden');
+            if ($(this).hasClass('category-age-link')) {
+                $('.category-age-section').removeClass('hidden');
+            } else if ($(this).hasClass('category-location-link')) {
+                $('.category-location-section').removeClass('hidden');
+            } else if ($(this).hasClass('category-length-link')) {
+                $('.category-length-section').removeClass('hidden');
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<br/>
+<br/>
+<br/>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-inline letters-list-nav">
+                <li class="{% add_active request 'letters:home' %}"><a href="{% url 'letters:home' %}">Latest</a></li>
+                <li class="{% add_active request 'letters:popular' %}"><a href="{% url 'letters:popular' %}">Most Popular</a></li>
+                <li class="{% add_active request 'letters:categories' %}"><a href="{% url 'letters:categories' %}">Categories</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-inline letters-categories-nav">
+                <li class="active"><a class="category-age-link" href="#">Age</a></li>
+                <li><a class="category-location-link" href="#">Location</a></li>
+                <li><a class="category-length-link" href="#">Letter length</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row category-section category-age-section">
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/<18-17.png' %}" alt="Ages under 18" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/19-25-17.png' %}" alt="Ages between 19 and 25" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/26-35-17.png' %}" alt="Ages between 26 and 35" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/36-45-17.png' %}" alt="Ages between 36 and 45" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/46-55-17.png' %}" alt="Ages between 46 and 55" class="img-responsive center-block">
+        </div>
+        <div class="col-xs-3">
+            <img src="{% static 'img/icons/>56-17.png' %}" alt="Ages above 56" class="img-responsive center-block">
+        </div>
+    </div>
+
+    <div class="row category-section category-length-section hidden">
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img src="{% static 'img/icons/< 5 Clock-17.png' %}" alt="Less than 5 minutes" class="img-responsive">
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="category-length-info">
+                        <div class="category-length-info-description">
+                            ~ 5 min
+                            <br/>
+                            10 letters
+                        </div>
+                        <a href="#" class="category-length-info-link">Show letters &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img src="{% static 'img/icons/5-10 clock-17.png' %}" alt="Between 5 and 10 minutes" class="img-responsive">
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="category-length-info">
+                        <div class="category-length-info-description">
+                            5 - 10 min
+                            <br/>
+                            10 letters
+                        </div>
+                        <a href="#" class="category-length-info-link">Show letters &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img src="{% static 'img/icons/10-15 clock-17.png' %}" alt="More than 10 minutes" class="img-responsive">
+                </div>
+                <div class="col-xs-6 col-sm-4">
+                    <div class="category-length-info">
+                        <div class="category-length-info-description">
+                            ~ 10 min
+                            <br/>
+                            10 letters
+                        </div>
+                        <a href="#" class="category-length-info-link">Show letters &raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+{% endblock %}

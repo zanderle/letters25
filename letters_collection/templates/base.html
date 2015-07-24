@@ -53,7 +53,7 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="{% add_active request 'letters:home' %}"><a href="{% url 'letters:home' %}">
+            <li class="{% add_active request 'letters:home;letters:popular;letters:categories' %}"><a href="{% url 'letters:home' %}">
             <span class="img-navbar-alt">Letters</span>
             <img class="img-navbar" src="{% static 'img/red_mailbox_menu.png' %}" alt="Letters">
             </a></li>

@@ -23,6 +23,13 @@ class IndexView(ListView):
             return qs.order_by('-popularity_index', '-timestamp_published', '-timestamp_created')
 
 
+class CategoryView(ListView):
+    model = Letter
+    template_name = 'category_detail.html'
+
+    # def get_queryset(self):
+
+
 class LetterView(DetailView):
     model = Letter
     template_name = 'letter_detail.html'
