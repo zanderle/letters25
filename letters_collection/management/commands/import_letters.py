@@ -70,6 +70,10 @@ class Command(BaseCommand):
                         published=True
                         )
                     new_letter.save()
+                else:
+                    old_letter = Letter.objects.filter(author=name)[0]
+                    old_letter.illustration.author = illustrator
+                    old_letter.illustration.save()
 
             except Exception as e:
                 self.stdout.write('Oops, some error: %s' % e)
