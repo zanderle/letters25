@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '#)nz_y%)s2e2st2s^m%8l*54iyr*(8^n=i*#lbirp79d2ule^x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.letterstomy25yearoldself.com',
+    '45.55.214.229',
+]
+
 
 
 # Application definition
@@ -124,7 +128,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, '../../static/')
 
-MEDIA_URL = '/filer_public_thumbnails/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_DIR, '../../media/')
 
 STATICFILES_DIRS = (
