@@ -4,7 +4,15 @@
 {% block extra_js %}
 {% javascript 'stellar' %}
 <script>
-    $('body').stellar();
+    $('body').stellar({
+        // Set scrolling to be in either one or both directions
+          horizontalScrolling: false,
+          // Enable or disable the two types of parallax
+          parallaxBackgrounds: false,
+          // Hide parallax elements that move outside the viewport
+          hideDistantElements: false,
+          responsive: true,
+    });
 </script>
 {% endblock %}
 
@@ -12,12 +20,12 @@
 <div class="container-fluid">
     
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-2 col-sm-6">
 
         </div>
-        <div class="col-xs-6 project-card-right-container">
+        <div class="col-xs-10 col-sm-6 project-card-right-container">
             <div class="project-card">
-                <h1 class="project-heading">About the project</h1>
+                <h1 class="project-heading">About the pr<span style="letter-spacing: -8px;">o</span>ject</h1>
                 <p>
                 Here is a collection of letters filled with the dreams, fears, and revelations of incredible people around the world.
 
@@ -25,7 +33,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-xs-6 project-card-left-container">
+        <div class="col-xs-10 col-sm-6 project-card-left-container">
             <div class="project-card">
                 <h1 class="project-heading">Mission</h1>
                 <p>
@@ -37,7 +45,7 @@
         </div>
     </div>
 
-    <img src="{% static 'img/icons/Orange mailbox - project page.png' %}" alt="Mailbox" class="project-mailbox orange-mailbox" data-stellar-ratio="0.6">
+    <img src="{% static 'img/icons/Orange mailbox - project page.png' %}" alt="Mailbox" class="project-mailbox orange-mailbox" data-stellar-ratio="0.5">
 
     <img src="{% static 'img/icons/red mailbox - project page.png' %}" alt="Mailbox" class="project-mailbox red-mailbox" data-stellar-ratio="1.8">
     <img src="{% static 'img/icons/yellow mailbox project page.png' %}" alt="Mailbox" class="project-mailbox yellow-mailbox" data-stellar-ratio="1.4">
@@ -47,6 +55,9 @@
 
 <br/>
 <br/>
+<br/>
+<br/>
+
 
 <div class="container">
     <div class="row">
@@ -54,8 +65,10 @@
             <h1 class="project-heading">Team</h1>
         </div>
     </div>
-    <br/>
-    <br/>
+    <div class="hidden-xs">
+        <br/>
+        <br/>
+    </div>
     <div class="row">
         <div class="col-xs-12">
             <div class="team-stamps-container">
@@ -63,18 +76,16 @@
                     <div class="team-stamp">
                         <h3 class="name">O Woomi Chung</h3>
                         <p>Illustrator, is a big supporter of stress laughing</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <br/>
                     </div>
                 </div>           
                 <div class="team-stamp-wrapper trina-wang">
+                    <div class="small-stamp"></div>
                     <div class="team-stamp">
                         <h3 class="name">Trina Wang</h3>
                         <p>Social Media Manager, curious about praxis and flows.</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <a target="_blank" href="http://twitter.com/trina_wang"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="http://trinawang.wordpress.com/"><i class="fa fa-link"></i></a>
                     </div>
                 </div>       
                 <div class="team-stamp-wrapper pik-shuen-fung">
@@ -83,10 +94,8 @@
                         <p>Founder, is an artist creating spaces for listening.</p>
                         <br/>
                         <br/>
-                        <br/>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <a target="_blank" href="http://www.pikshuen.com/"><i class="fa fa-link"></i></a>
+                        <a target="_blank" href="https://instagram.com/piksy/"><i class="fa fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="team-stamp-wrapper lillienne-zen">
@@ -96,18 +105,14 @@
                         <br/>
                         <br/>
                         <br/>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <br/>
                     </div>
                 </div>
                 <div class="team-stamp-wrapper vania-wat">
                     <div class="team-stamp">
                         <h3 class="name">Vania Wat</h3>
-                        <p>Illustrator, is a big supporter of stress laughing</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <p>Illustrator, is an insomniac cat lady.</p>
+                        <a target="_blank" href="http://vaniawat.com/"><i class="fa fa-link"></i></a>
                     </div>
                 </div>
             </div>
@@ -116,13 +121,17 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="team-stamps-container">
+                <div class="team-stamp-wrapper empty-stamp-wrapper">
+                    <div class="small-stamp"></div>
+                </div>
                 <div class="team-stamp-wrapper zan-anderle">
                     <div class="team-stamp">
                         <h3 class="name">Zan Anderle</h3>
                         <p>Site Developer, is a jazz fiend by day, programmer by night.</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <a target="_blank" href="https://www.linkedin.com/profile/view?id=282220650"><i class="fa fa-linkedin"></i></a>
+                        <a target="_blank" href="https://twitter.com/z_anderle"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://instagram.com/zanderle"><i class="fa fa-instagram"></i></a>
+                        <a target="_blank" href="http://musingsonmusic.com"><i class="fa fa-link"></i></a>
                     </div>
                 </div>
 
@@ -130,19 +139,16 @@
                     <div class="team-stamp">
                         <h3 class="name">Rachel Suen</h3>
                         <p>Illustrator, is always hungry... for some good food.</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <br/>
+                        <br/>
                     </div>
                 </div>
 
                 <div class="team-stamp-wrapper wei-zheng">
                     <div class="team-stamp">
                         <h3 class="name">Wei Zheng</h3>
-                        <p>Designer, hey check my website!</p>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-instagram"></i>
+                        <p>Designer, working on Marathon!</p>
+                        <a target="_blank" href="http://www.thisweidesign.com/"><i class="fa fa-link"></i></a>
                     </div>
                 </div>
                 

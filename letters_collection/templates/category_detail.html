@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load active_tag %}
+{% load active_tag thumbnail %}
 
 {% block content %}
 <div class="container">
@@ -12,7 +12,7 @@
             <ul class="list-inline letters-list-nav">
                 <li class="{% add_active request 'letters:home' %}"><a href="{% url 'letters:home' %}">Latest</a></li>
                 <li class="{% add_active request 'letters:popular' %}"><a href="{% url 'letters:popular' %}">Most Popular</a></li>
-                <li class="{% add_active request 'letters:categories' %}"><a href="{% url 'letters:categories' %}">Categories</a></li>
+                <li class="{% add_active request 'letters:categories' '/categories/' %}"><a href="{% url 'letters:categories' %}">Categories</a></li>
             </ul>
         </div>
     </div>
@@ -21,9 +21,9 @@
     <div class="row">
         <div class="col-xs-12">
             <ul class="list-inline letters-categories-nav">
-                <li class="active"><a class="category-age-link" href="#">Age</a></li>
-                <li><a class="category-location-link" href="#">Location</a></li>
-                <li><a class="category-length-link" href="#">Letter length</a></li>
+                <li class="{% add_active request '' '/age/' %}"><a class="category-age-link" href="{% url 'letters:categories' %}?category=age">Age{% if selected == "age" %} | {{ value }}{% endif %}</a></li>
+                {# <li class="{% add_active request '' '/location/' %}"><a class="category-location-link" href="{% url 'letters:categories' %}?category=location">Location{% if selected == "location" %} | {{ value }}{% endif %}</a></li> #}
+                <li class="{% add_active request '' '/length/' %}"><a class="category-length-link" href="{% url 'letters:categories' %}?category=length">Letter length{% if selected == "length" %} | {{ value }}{% endif %}</a></li>
             </ul>
         </div>
     </div>
@@ -32,7 +32,7 @@
 
     <div class="row">
         {% for letter in object_list %}
-            <div class="col-xs-3">
+            <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="letter-list-icon">
                     <a href="{% url 'letters:letter' letter.slug %}">
                         <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}">

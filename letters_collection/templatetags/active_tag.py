@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def add_active(request, names, by_path=False):
+def add_active(request, names, includes='', by_path=False):
     """ Return the string 'active' current request.path is same as name
 
     Keyword aruguments:
@@ -15,12 +15,18 @@ def add_active(request, names, by_path=False):
     """
     names = names.split(';')
     for name in names:
+        if not name:
+            continue
         if by_path:
             path = name
         else:
             path = reverse(name)
 
         if request.path == path:
+            return ' active '
+    includes = includes.split(';')
+    for include in includes:
+        if include and include in request.path:
             return ' active '
 
     return ''

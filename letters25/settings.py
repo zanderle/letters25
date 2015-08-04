@@ -135,7 +135,7 @@ STATICFILES_DIRS = (
 PIPELINE_CSS = {
     'pace': {
         'source_filenames': (
-            'pace/themes/red/pace-theme-minimal.css',
+            'pace/themes/blue/pace-theme-minimal.css',
         ),
         'output_filename': 'css/pace-theme.min.css',
     },
@@ -221,6 +221,15 @@ import markdown
 MARKUP_FIELD_TYPES = (
     ('markdown', markdown.markdown),
 )
+
+EMAIL_HOST = 'mail.letterstomy25yearoldself.com'
+EMAIL_HOST_USER = 'submissions@letterstomy25yearoldself.com'
+EMAIL_HOST_PASSWORD = 'LakeInspireRiver'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM = 'submissions@letterstomy25yearoldself.com'
+TEAM_EMAILS = ['letterstomy25yearoldself@gmail.com']
 
 try:
     from .local_settings import *
