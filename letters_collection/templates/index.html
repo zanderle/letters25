@@ -64,11 +64,6 @@
     <div class="row">
         {% for letter in object_list %}
             <div class="col-xs-12 col-sm-4 col-md-3">
-<!--                 <div class="letter-list-icon-test">
-                    <img src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}" class="img-responsive center-block">
-                    <a href="{% url 'letters:letter' letter.slug %}" class="letter-list-icon-link"></a>
-                </div> -->
-
 
                 <div class="letter-list-icon">
                     <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}">
@@ -82,8 +77,8 @@
                         </div>
                     </a>
                 </div>
-                    <a href="#" class="visible-xs-block text-center link-to-letter-mobile">
-                    <i class="fa fa-plus-square-o fa-lg"></i></a>
+                <a href="#" class="visible-xs-block text-center link-to-letter-mobile">
+                <i class="fa fa-plus-square-o fa-lg"></i></a>
             </div>
         {% endfor %}
     </div>

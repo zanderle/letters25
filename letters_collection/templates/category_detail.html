@@ -34,8 +34,8 @@
         {% for letter in object_list %}
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="letter-list-icon">
-                    <a href="{% url 'letters:letter' letter.slug %}">
-                        <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}">
+                    <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}">
+                    <a class="link-to-letter" href="{% url 'letters:letter' letter.slug %}">
                         <div class="overlay"></div>
                         <div class="letter-list-icon-link">
                         <span>
@@ -45,6 +45,8 @@
                         </div>
                     </a>
                 </div>
+                <a href="#" class="visible-xs-block text-center link-to-letter-mobile">
+                <i class="fa fa-plus-square-o fa-lg"></i></a>
             </div>
         {% endfor %}
     </div>
