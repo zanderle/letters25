@@ -226,13 +226,13 @@ MARKUP_FIELD_TYPES = (
     ('markdown', markdown.markdown),
 )
 
-EMAIL_HOST = 'mail.letterstomy25yearoldself.com'
-EMAIL_HOST_USER = 'submissions@letterstomy25yearoldself.com'
-EMAIL_HOST_PASSWORD = 'LakeInspireRiver'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'letterstomy25yearoldself@gmail.com'
+EMAIL_HOST_PASSWORD = 'pmouythhmwyoorrs'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-DEFAULT_FROM = 'submissions@letterstomy25yearoldself.com'
+DEFAULT_FROM = 'letterstomy25yearoldself@gmail.com'
 TEAM_EMAILS = ['letterstomy25yearoldself@gmail.com']
 
 try:
