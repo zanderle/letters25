@@ -52,7 +52,7 @@ class Letter(models.Model):
     def save(self, *args, **kwargs):
         # Fill in self.letter_length if it is empty
         if not self.letter_length:
-            self.letter_length = self.get_reading_length
+            self.letter_length = self.get_reading_length()
         super(Letter, self).save(*args, **kwargs)
 
     def get_reading_length(self):
