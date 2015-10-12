@@ -1,0 +1,63 @@
+import os
+
+INTERNAL_IPS = (
+    '0.0.0.0',
+    '127.0.0.1',
+)
+
+# Settings for your local database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'letters',
+        'USER': 'letters',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+DEBUG = True
+ALLOWED_HOSTS = []
+
+# Change STATIC_ROOT and MEDIA_ROOT to where you want the media files to be
+PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, '../../.letters/static/')
+
+MEDIA_URL = '/filer_public_thumbnails/'
+MEDIA_ROOT = os.path.join(PROJECT_DIR, '../../.letters/media/')
+
+# Edit the source_filenames according to how you compiled css-es
+PIPELINE_CSS = {
+    'pace': {
+        'source_filenames': (
+            'pace/themes/blue/pace-theme-minimal.css',
+        ),
+        'output_filename': 'css/pace-theme.min.css',
+    },
+    'font-awesome': {
+        'source_filenames': (
+            'font-awesome/css/font-awesome.css',
+        ),
+        'output_filename': 'css/font-awesome.min.css'
+    },
+    'material-form': {
+        'source_filenames': (
+            'less/material-form.css',
+        ),
+        'output_filename': 'css/material-form.min.css',
+    },
+    # Custom styling
+    'custom': {
+        'source_filenames': (
+            'less/style.css',
+        ),
+        'output_filename': 'css/custom.min.css',
+    }
+}
+
+# Edit this to test emails sending (so we don't send emails to the team accidentally)
+TEAM_EMAILS = ['my.email@gmail.com']
+
+# Comment this out, if you want to actually send the emails
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
