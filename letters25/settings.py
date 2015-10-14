@@ -226,12 +226,12 @@ MARKUP_FIELD_TYPES = (
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'letterstomy25yearoldself@gmail.com'
-EMAIL_HOST_PASSWORD = 'pmouythhmwyoorrs'
+EMAIL_HOST_PASSWORD = 'urijmnrckewflkje'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-DEFAULT_FROM = 'letterstomy25yearoldself@gmail.com'
-TEAM_EMAILS = ['letterstomy25yearoldself@gmail.com']
+DEFAULT_FROM = 'submissions@letterstomy25yearoldself.com'
+TEAM_EMAILS = ['submissions@letterstomy25yearoldself.com']
 
 try:
     from .local_settings import *
