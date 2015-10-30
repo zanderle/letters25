@@ -30,8 +30,9 @@
         <div class="featured-letter">
             <img class="img-responsive inline-block center-block featured-letter-illustration" src="{{ featured.illustration|thumbnail_url:'featured' }}" alt="{{ featured.illustration.default_alt_text }}">
 
-            <div class="letter-info  inline-block text-left">
+            <div class="letter-info inline-block text-left {% if not featured.published%}unpublished{% endif %}">
                 <div class="letter-info-content">
+                    {% if not featured.published%}[Unpublished]<br/>{% endif %}
                     <strong>{{ featured.author }}</strong><br/>
                     {{ featured.age }}<br/>
                     {{ featured.occupation }}<br/>
@@ -67,7 +68,7 @@
 
                 <div class="letter-list-icon">
                     <img class="img-responsive center-block" src="{{ letter.illustration|thumbnail_url:'list-size' }}" alt="{{ letter.illustration.default_alt_text }}">
-                    <a class="link-to-letter" href="{% url 'letters:letter' letter.slug %}">
+                    <a class="link-to-letter {% if not letter.published%}unpublished{% endif %}" href="{% url 'letters:letter' letter.slug %}">
                         <div class="overlay"></div>
                         <div class="letter-list-icon-link">
                         <span>
