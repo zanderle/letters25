@@ -21,8 +21,9 @@
     <div class="row">
         <div class="col-xs-12">
         <div class="letter-header">
-            <div class="letter-info  text-left">
+            <div class="letter-info  text-left {% if not letter.published%}unpublished{% endif %}">
                 <div class="letter-info-content">
+                    {% if not letter.published%}[Unpublished]<br/>{% endif %}
                     <strong>{{ letter.author }}</strong><br/>
                     {{ letter.age }}<br/>
                     {{ letter.occupation }}<br/>

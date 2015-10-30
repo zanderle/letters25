@@ -9,12 +9,15 @@ from .actions import notify_author, notify_team
 class IndexView(ListView):
     model = Letter
     template_name = 'index.html'
-    queryset = Letter.objects.filter(published=True).order_by('-timestamp_published', '-timestamp_created')
     letters_list = 'latest'
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        featured = Letter.objects.filter(published=True).latest('timestamp_published')
+        # For admins show the latest letter
+        # For normal users show the latest published letter
+        featured = Letter.objects.all() if self.request.user.is_superuser else Letter.objects.filter(published=True)
+        featured = featured.latest('timestamp_published')
+
         if self.letters_list == 'popular':
             featured = Letter.objects.filter(published=True).order_by(
                 '-popularity_index',
@@ -26,9 +29,10 @@ class IndexView(ListView):
         return context
 
     def get_queryset(self):
-        qs = super(IndexView, self).get_queryset()
+        # For admins show all the letters but for normal users show only published letters
+        qs = Letter.objects.all() if self.request.user.is_superuser else Letter.objects.filter(published=True)
         if self.letters_list == 'latest':
-            return qs
+            return qs.order_by('-timestamp_published', '-timestamp_created')
         elif self.letters_list == 'popular':
             return qs.order_by('-popularity_index', '-timestamp_published', '-timestamp_created')[:15]
 
@@ -92,6 +96,11 @@ class CategoryView(ListView):
 class LetterView(DetailView):
     model = Letter
     template_name = 'letter_detail.html'
+
+    def get_queryset(self):
+        # For admins show all the letters but for normal users show only published letters
+        qs = Letter.objects.all() if self.request.user.is_superuser else Letter.objects.filter(published=True)
+        return qs.order_by('-timestamp_published', '-timestamp_created')
 
     def get_context_data(self, **kwargs):
         context = super(LetterView, self).get_context_data(**kwargs)
