@@ -4,6 +4,9 @@ This is a Django powered website for the Letters project. A collection of letter
 revelations of incredible people around the world. A project that asks the question
 > "If you could tell your 25-year-old self anything at all, what would you say?"
 
+### DEPRECATION NOTE:
+The project is no longer active, so the live website has been replaced with a static copy of this Django powered website.
+
 ## Setting up the site locally
 
 Start by cloning the git project
